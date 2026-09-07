@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Heart, Menu, Search, ShoppingCart, User } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -14,6 +15,8 @@ const navItems = [
 ];
 
 export default function Navbar() {
+  const path=usePathname()
+  console.log(path)
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
@@ -39,7 +42,7 @@ export default function Navbar() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className={path==item.href? 'text-green-500 bg-gray-200 rounded-2xl p-1 ':'text-sm font-medium text-muted-foreground transition-colors hover:text-foreground'}
             >
               {item.label}
             </Link>
@@ -51,13 +54,13 @@ export default function Navbar() {
             <Search className="h-4 w-4" />
           </Button>
 
-          <Button asChild variant="ghost" size="icon" aria-label="Wishlist">
+          <Button  variant="ghost" size="icon" aria-label="Wishlist">
             <Link href="/wishList">
               <Heart className="h-4 w-4" />
             </Link>
           </Button>
 
-          <Button asChild variant="ghost" size="icon" aria-label="Cart" className="relative">
+          <Button  variant="ghost" size="icon" aria-label="Cart" className="relative">
             <Link href="/cart">
               <ShoppingCart className="h-4 w-4" />
               <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[9px] font-bold text-primary-foreground">
@@ -67,13 +70,13 @@ export default function Navbar() {
           </Button>
 
           <div className="hidden items-center gap-2 sm:flex">
-            <Button asChild variant="outline">
+            <Button  variant="outline">
               <Link href="/login" className="inline-flex items-center gap-2">
                 <User className="h-4 w-4" />
                 Login
               </Link>
             </Button>
-            <Button asChild>
+            <Button >
               <Link href="/register">Register</Link>
             </Button>
           </div>

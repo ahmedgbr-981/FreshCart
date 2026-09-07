@@ -1,4 +1,4 @@
-import DisplayAllProducts from "@/components/allProducts/page";
+import DisplayAllProducts from "@/components/(pages)/allProducts/page";
 
 
 

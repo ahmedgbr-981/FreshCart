@@ -1,7 +1,7 @@
 import getAllPro from '@/api/getAllProducts.api'
-import ProductCard from '@/components/productCard/page'
 import { AllProducts } from '@/types/allProducts.types'
 import { log } from 'console'
+import ProductCard from '../productCard/page'
 
 export default async function DisplayAllProducts() {
      let data=await getAllPro()

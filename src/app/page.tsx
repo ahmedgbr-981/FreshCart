@@ -1,6 +1,6 @@
-import DisplayAllProducts from "@/components/allProducts/page";
-import CatSlider from "@/components/catSlider/page";
-import MainSlider from "@/components/mainSlader/page";
+import DisplayAllProducts from "@/components/(pages)/allProducts/page";
+import CatSlider from "@/components/(pages)/catSlider/page";
+import MainSlider from "@/components/(pages)/mainSlader/page";
 import Image from "next/image";
 
 export default function Home() {

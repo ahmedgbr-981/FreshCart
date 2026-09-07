@@ -1,6 +1,6 @@
 
 import getProDetailes from "@/api/productDetailes.api";
-import Swper from "@/components/swper/page";
+import Swper from "@/components/(pages)/swper/page";
 import { log } from "console";
 
 
