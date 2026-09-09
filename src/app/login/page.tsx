@@ -11,10 +11,11 @@ import { Loader2 } from "lucide-react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { loginSchema, loginSchemaType } from "../schema/login.schema";
+import { signIn } from "next-auth/react";
 
 export default function Register() {
   const [isLoading, setIsLoading] = useState(false);
-  const router =useRouter()
+  const router = useRouter();
 
   const form = useForm({
     defaultValues: {
@@ -28,7 +29,7 @@ export default function Register() {
   const { handleSubmit } = form;
 
   interface FormFeild {
-    name:"email" | "password" ;
+    name: "email" | "password";
     type: string;
     placeholder: string;
   }
@@ -36,39 +37,65 @@ export default function Register() {
   const formFields: FormFeild[] = [
     { name: "email", placeholder: "Enter your email", type: "email" },
     { name: "password", placeholder: "Enter your password", type: "password" },
-    
   ];
 
   async function handelSignIn(values: loginSchemaType) {
     console.log(values);
     setIsLoading(true);
-    try {
-      const resp = await fetch(
-        `https://ecommerce.routemisr.com/api/v1/auth/signin`,
-        {
-          method: "POST",
-          body: JSON.stringify(values),
-          headers: { "Content-type": "application/json" },
-        },
-      );
-      const data = await resp.json();
-      console.log(data);
-      if(data.message=='success'){
-        toast.success('logged in',{
-          position:'top-center',delay:1000,autoClose:1200
-        })
-        router.push('/')
-      }
+    // try {
+    //   const resp = await fetch(
+    //     `https://ecommerce.routemisr.com/api/v1/auth/signin`,
+    //     {
+    //       method: "POST",
+    //       body: JSON.stringify(values),
+    //       headers: { "Content-type": "application/json" },
+    //     },
+    //   );
+    //   const data = await resp.json();
+    //   console.log(data);
+    //   if(data.message=='success'){
+    //     toast.success('logged in',{
+    //       position:'top-center',delay:1000,autoClose:1200
+    //     })
+    //     router.push('/')
+    //   }
 
-      else{
-        toast.error(data.message,{
-          position:'top-center',delay:1000,autoClose:1200
-        })
+    //   else{
+    //     toast.error(data.message,{
+    //       position:'top-center',delay:1000,autoClose:1200
+    //     })
+    //   }
+    // } catch (error) {
+    //    toast.error('something went wrong',{
+    //       position:'top-center',delay:1000,autoClose:1200
+    //     })
+    // } finally {
+    //   setIsLoading(false);
+    // }
+
+    try {
+      const resp = await signIn("credentials", {
+        email: values.email,
+        password: values.password,
+        redirect: false,
+        callbackUrl: "/",
+      });
+      if (resp?.ok) {
+        toast.success("logged in", { position: "top-center", delay: 1000 });
+        router.push("/");
+      } else {
+        toast.error(resp?.error || "something went wrong", {
+          position: "top-center",
+          delay: 1000,
+          autoClose: 1200,
+        });
       }
     } catch (error) {
-       toast.error('something went wrong',{
-          position:'top-center',delay:1000,autoClose:1200
-        })
+      toast.error("something went wrong", {
+        position: "top-center",
+        delay: 1000,
+        autoClose: 1200,
+      });
     } finally {
       setIsLoading(false);
     }
