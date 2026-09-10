@@ -1,6 +1,7 @@
 import { NextAuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { jwtDecode } from "jwt-decode";
+import { log } from "console";
 
 const baseUrl = process.env.API ?? "https://ecommerce.routemisr.com/api/v1";
 
@@ -55,6 +56,7 @@ export const nextAuthOptions: NextAuthOptions = {
              token.user = user.user,
             token.token = user.token
            }
+           log(token)
             return token
         },
 
