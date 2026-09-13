@@ -10,8 +10,9 @@ import {
 import { Button } from "@base-ui/react";
 import { Star } from "lucide-react";
 import Link from "next/link";
-import { AllProducts } from "../../types/allProducts.types";
 import Image from "next/image";
+import AddToCartBtn from "@/components/addToCartBtn/AddToCartBtn";
+import { AllProducts } from "@/types/allProducts.types";
 
 export default function ProductCard({ product }: { product: AllProducts }) {
   return (
@@ -54,13 +55,7 @@ export default function ProductCard({ product }: { product: AllProducts }) {
               </CardHeader>
               <CardContent></CardContent>
             </Link>
-            <Button
-              className={
-                "cursor-pointer group-hover:opacity-100 w-full my-3 bg-green-500 hover:bg-green-600 transition-all duration-200 rounded-2xl p-3 opacity-0"
-              }
-            >
-              Add to cart
-            </Button>
+           <AddToCartBtn proId={product._id}/>
           </Card>
         </div>
       </div>
