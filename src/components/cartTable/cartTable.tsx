@@ -2,6 +2,7 @@
 
 import { CartOwner } from "@/types/userCart.type"
 import Image from "next/image"
+import RemoveFromCartBtn from "../RemoveFromCartBtn/RemoveFromCartBtn"
 
 export default function CartTable({cart}:{cart:CartOwner}) {
 
@@ -71,11 +72,10 @@ export default function CartTable({cart}:{cart:CartOwner}) {
           {p.price}
         </td>
         <td className="px-6 py-4">
-          <a href="#" className="font-medium text-fg-danger hover:underline">Remove</a>
+    <RemoveFromCartBtn id={p.product._id}/>
         </td>
       </tr>)}
       
-    
     </tbody>
   </table>
 </div>
