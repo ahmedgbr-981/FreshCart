@@ -3,6 +3,9 @@
 import { CartOwner } from "@/types/userCart.type"
 import Image from "next/image"
 import RemoveFromCartBtn from "../RemoveFromCartBtn/RemoveFromCartBtn"
+import { Button } from "@base-ui/react"
+import { Trash } from "lucide-react"
+import ClearCartBtn from "../ClearCartBtn/ClearCartBtn"
 
 export default function CartTable({cart}:{cart:CartOwner}) {
 
@@ -23,7 +26,9 @@ export default function CartTable({cart}:{cart:CartOwner}) {
     <span className="text-2xl">Total</span>
   <span className="text-green-500 text-2xl"> {cart.totalCartPrice.toLocaleString()} EGP</span>
   </div>
-  
+  <div className="flex justify-end px-3">
+    <ClearCartBtn/>
+  </div>
   <table className="w-full text-sm text-left rtl:text-right text-body">
     <thead className="text-sm text-body bg-neutral-secondary-medium border-b border-default-medium">
       <tr>
