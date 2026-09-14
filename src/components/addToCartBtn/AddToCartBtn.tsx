@@ -5,7 +5,7 @@ import { Button } from "@base-ui/react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-export default function AddToCartBtn({ proId }: { proId: string }) {
+export default function AddToCartBtn({ proId,show=false }: { proId: string,show?:Boolean }) {
 
     const [isLoading, setIsLoading] = useState(false)
 
@@ -23,7 +23,7 @@ export default function AddToCartBtn({ proId }: { proId: string }) {
        else {
         toast.error("somthin went wrong");
       }
-    } catch (error){
+    } catch (error) {
          toast.error('error!', {
           position: "top-right",
           autoClose: 1000,
@@ -40,7 +40,7 @@ export default function AddToCartBtn({ proId }: { proId: string }) {
       <Button
         onClick={() => AddToCartBridge(proId)}
         className={
-          "cursor-pointer group-hover:opacity-100 w-full my-3 bg-green-500 hover:bg-green-600 transition-all duration-200 rounded-2xl p-3 opacity-0"
+          `cursor-pointer  w-full my-3 bg-green-500 hover:bg-green-600 transition-all duration-200 rounded-2xl p-3 ${show&&'group-hover:opacity-100,opacity-0'}`
         }
       >
        {

@@ -1,12 +1,14 @@
+import getUserCart from '@/cartAction/getUserCart'
+import CartTable from '@/components/cartTable/cartTable'
 import { log } from 'console'
-import getMyToken from '../../utilities/getMyToken.utilities'
 
 
 export default async function Cart() {
-
-  const resp=await getMyToken()
-  log(resp)
+    const resp=await getUserCart()
+    log(resp)
   return (
-    <div>Cart</div>
+   <>
+   <CartTable cart={resp.data}/>
+   </>
   )
 }
