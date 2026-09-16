@@ -5,7 +5,8 @@ import { Heart, Menu, Search, ShoppingCart, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
-import { useState } from "react";
+import React, { useState } from "react";
+import CartIcon from "@/components/CartIcon/CartIcon";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -16,7 +17,7 @@ const navItems = [
   { label: "Cart", href: "/cart" },
 ];
 
-export default function Navbar() {
+export default function Navbar({cartIcon}:{cartIcon:React.ReactNode}) {
   const { data: session } = useSession();
   const path = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -52,19 +53,66 @@ export default function Navbar() {
         </div>
 
         <nav className="hidden items-center gap-6 md:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={
-                path == item.href
-                  ? "text-green-500 bg-gray-200 rounded-2xl p-1 "
-                  : "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-              }
-            >
-              {item.label}
-            </Link>
-          ))}
+          <Link
+            href="/"
+            className={
+              path == "/"
+                ? "text-green-500 bg-gray-200 rounded-2xl p-1 "
+                : "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            }
+          >
+            Home
+          </Link>
+          <Link
+            href="/categories"
+            className={
+              path == "/categories"
+                ? "text-green-500 bg-gray-200 rounded-2xl p-1 "
+                : "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            }
+          >
+            Categories
+          </Link>
+          <Link
+            href="/products"
+            className={
+              path == "/products"
+                ? "text-green-500 bg-gray-200 rounded-2xl p-1 "
+                : "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            }
+          >
+            Products
+          </Link>
+          <Link
+            href="/brands"
+            className={
+              path == "/brands"
+                ? "text-green-500 bg-gray-200 rounded-2xl p-1 "
+                : "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            }
+          >
+            Brands
+          </Link>
+          <Link
+            href="/wishList"
+            className={
+              path == "/wishList"
+                ? "text-green-500 bg-gray-200 rounded-2xl p-1 "
+                : "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            }
+          >
+            Wishlist
+          </Link>
+         <Link
+            href="/cart"
+            className={
+              path == "/cart"
+                ? "text-green-500 bg-gray-200 rounded-2xl p-1 "
+                : "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            }
+          >
+            Cart
+          </Link>
         </nav>
 
         {session ? (
@@ -90,12 +138,7 @@ export default function Navbar() {
               aria-label="Cart"
               className="relative"
             >
-              <Link href="/cart">
-                <ShoppingCart className="h-4 w-4" />
-                <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[9px] font-bold text-primary-foreground">
-                  2
-                </span>
-              </Link>
+             {cartIcon}
             </Button>
 
             <div onClick={LogOut}>
@@ -120,20 +163,71 @@ export default function Navbar() {
       {isMenuOpen && (
         <nav className="border-t border-border/70 px-4 py-3 md:hidden">
           <div className="mx-auto flex max-w-7xl flex-col gap-2">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setIsMenuOpen(false)}
-                className={
-                  path === item.href
-                    ? "rounded-md bg-gray-200 p-2 text-green-500"
-                    : "rounded-md p-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                }
-              >
-                {item.label}
-              </Link>
-            ))}
+          <Link
+            href="/"
+            onClick={() => setIsMenuOpen(false)}
+            className={
+              path == "/"
+                ? "rounded-md bg-gray-200 p-2 text-green-500"
+                : "rounded-md p-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            }
+          >
+            Home
+          </Link>
+          <Link
+            href="/categories"
+            onClick={() => setIsMenuOpen(false)}
+            className={
+              path == "/categories"
+                ? "rounded-md bg-gray-200 p-2 text-green-500"
+                : "rounded-md p-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            }
+          >
+            Categories
+          </Link>
+          <Link
+            href="/products"
+            onClick={() => setIsMenuOpen(false)}
+            className={
+              path == "/products"
+                ? "rounded-md bg-gray-200 p-2 text-green-500"
+                : "rounded-md p-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            }
+          >
+            Products
+          </Link>
+          <Link
+            href="/brands"
+            onClick={() => setIsMenuOpen(false)}
+            className={
+              path == "/brands"
+                ? "rounded-md bg-gray-200 p-2 text-green-500"
+                : "rounded-md p-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            }
+          >
+            Brands
+          </Link>
+          <Link
+            href="/wishList"
+            onClick={() => setIsMenuOpen(false)}
+            className={
+              path == "/wishList"
+                ? "rounded-md bg-gray-200 p-2 text-green-500"
+                : "rounded-md p-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            }
+          >
+            Wishlist
+          </Link>
+        <Link
+            href="/cart"
+            className={
+              path == "/cart"
+                ? "text-green-500 bg-gray-200 rounded-2xl p-1 "
+                : "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            }
+          >
+            Cart
+          </Link>
           </div>
         </nav>
       )}

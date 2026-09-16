@@ -1,4 +1,4 @@
-
+'use server'
 import getMyToken from '../utilities/getMyToken.utilities'
 
 export default async function getUserCart() {

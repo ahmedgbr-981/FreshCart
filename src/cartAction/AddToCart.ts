@@ -1,4 +1,4 @@
-
+'use server'
 import geyMyToken from "@/utilities/getMyToken.utilities"
 
 

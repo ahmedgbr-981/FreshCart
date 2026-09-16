@@ -1,4 +1,4 @@
-
+'use server'
 import { toast } from 'react-toastify'
 import getMyToken from '../utilities/getMyToken.utilities'
 

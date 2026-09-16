@@ -63,7 +63,7 @@ export default function CartTable({cart}:{cart:CartOwner}) {
          <UpdateQty count={p.count} id={p.product._id}/>
         </td>
         <td className="px-6 py-4 font-semibold text-heading">
-          {p.price}
+          {p.count*p.price}
         </td>
         <td className="px-6 py-4">
     <RemoveFromCartBtn id={p.product._id}/>

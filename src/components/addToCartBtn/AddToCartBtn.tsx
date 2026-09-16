@@ -2,23 +2,34 @@
 
 import AddToCart from "@/cartAction/AddToCart";
 import { Button } from "@base-ui/react";
+import { getSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-export default function AddToCartBtn({ proId,show=false }: { proId: string,show?:Boolean }) {
+export default  function AddToCartBtn({ proId,show=false }: { proId: string,show?:Boolean }) {
 
     const [isLoading, setIsLoading] = useState(false)
-
+    const router=useRouter();
+    const session=''
+ async ()=>{ const session=await getSession()}
   async function AddToCartBridge(id: string) {
+
+    if(!session){
+      router.push('/login')
+      return
+    }
+
     try {
         setIsLoading(true)
       const resp = await AddToCart(id);
       if (resp.status == "success") {
         toast.success(resp.message, {
-          position: "top-right",
+          position: "top-center",
           autoClose: 1000,
           closeOnClick: true,
         });
+        router.refresh()
       }
        else {
         toast.error("somthin went wrong");

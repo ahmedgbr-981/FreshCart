@@ -7,7 +7,7 @@ import { log } from "console";
 // Import Swiper styles
 import "swiper/css";
 
-export default async function ProductDetailes({ params }:{params:{id:string}}) {
+export default async function ProductDetailes({ params }:{params:Promise<{id:string}>}) {
   let { id } = await params;
 
   let { data } = await getProDetailes(id);
