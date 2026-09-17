@@ -1,6 +1,6 @@
+'use server'
 import { toast } from 'react-toastify';
 import getMyToken  from '../utilities/getMyToken.utilities';
-'use server'
 
 export default async function removeFrmCart(id:string) {    
     const token =await getMyToken()

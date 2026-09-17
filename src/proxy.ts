@@ -2,18 +2,24 @@ import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 
 export default async function proxy(request: NextRequest) {
-    const token = await getToken({
-        req: request,
-        secret: process.env.NEXTAUTH_SECRET,
-    });
+    const token = await getToken({req: request});
 
+    const pathName=request.nextUrl.pathname
     if (token) {
-        return NextResponse.next();
+        if(pathName=='/login'||pathName=='/register')
+            return NextResponse.redirect(new URL("/", request.url));
+
+        return NextResponse.next()
     }
 
-    return NextResponse.redirect(new URL("/login", request.url));
+
+    // return NextResponse.redirect(new URL("/login", request.url));
+
+    if(pathName=='/cart'||pathName=='/wishList'){
+        return NextResponse.redirect(new URL('/login',request.url))
+    }
 }
 
 export const config = {
-    matcher: ["/cart/:path*", "/wishList/:path*"],
+    matcher: ["/cart", "/wishList",'/login','/register'],
 };

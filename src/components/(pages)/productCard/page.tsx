@@ -8,17 +8,19 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@base-ui/react";
-import { Star } from "lucide-react";
+import { Heart, Star } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import AddToCartBtn from "@/components/addToCartBtn/AddToCartBtn";
 import { AllProducts } from "@/types/allProducts.types";
+import WishListIcon from "@/components/WishListIcon/WishListIcon";
 
 export default function ProductCard({ product }: { product: AllProducts }) {
   return (
     <>
       <div className="w-full md:w-1/4 lg:w-1/5 ">
         <div className="inner ">
+         <WishListIcon id={product.id} />
           <Card className="px-4 ring-0 hover:ring-2 hover:ring-green-500 cursor-pointer group">
             <Link href={`/products/${product.id}`}>
               <CardHeader>
