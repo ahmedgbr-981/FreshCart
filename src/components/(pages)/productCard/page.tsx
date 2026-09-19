@@ -15,12 +15,12 @@ import AddToCartBtn from "@/components/addToCartBtn/AddToCartBtn";
 import { AllProducts } from "@/types/allProducts.types";
 import WishListIcon from "@/components/WishListIcon/WishListIcon";
 
-export default function ProductCard({ product }: { product: AllProducts }) {
+export default function ProductCard({ product,isWish }: { product: AllProducts,isWish:Boolean }) {
   return (
     <>
       <div className="w-full md:w-1/4 lg:w-1/5 ">
         <div className="inner ">
-         <WishListIcon id={product.id} />
+         <WishListIcon id={product.id} isWish={isWish} />
           <Card className="px-4 ring-0 hover:ring-2 hover:ring-green-500 cursor-pointer group">
             <Link href={`/products/${product.id}`}>
               <CardHeader>
