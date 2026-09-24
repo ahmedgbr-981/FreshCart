@@ -7,21 +7,25 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-export default  function AddToCartBtn({ proId,show=false }: { proId: string,show?:Boolean }) {
+export default function AddToCartBtn({
+  proId,
+  show = false,
+}: {
+  proId: string;
+  show?: Boolean;
+}) {
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
-    const [isLoading, setIsLoading] = useState(false)
-    const router=useRouter();
-    const session=''
- async ()=>{ const session=await getSession()}
   async function AddToCartBridge(id: string) {
-
-    if(!session){
-      router.push('/login')
-      return
+    const session = await getSession();
+    if (!session) {
+      router.push("/login");
+      return;
     }
 
     try {
-        setIsLoading(true)
+      setIsLoading(true);
       const resp = await AddToCart(id);
       if (resp.status == "success") {
         toast.success(resp.message, {
@@ -29,20 +33,18 @@ export default  function AddToCartBtn({ proId,show=false }: { proId: string,show
           autoClose: 1000,
           closeOnClick: true,
         });
-        router.refresh()
-      }
-       else {
+        router.refresh();
+      } else {
         toast.error("somthin went wrong");
       }
     } catch (error) {
-         toast.error('error!', {
-          position: "top-right",
-          autoClose: 1000,
-          closeOnClick: true,
-        });
-    }
-    finally{
-        setIsLoading(false)
+      toast.error("error!", {
+        position: "top-right",
+        autoClose: 1000,
+        closeOnClick: true,
+      });
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -50,13 +52,9 @@ export default  function AddToCartBtn({ proId,show=false }: { proId: string,show
     <>
       <Button
         onClick={() => AddToCartBridge(proId)}
-        className={
-          `cursor-pointer  w-full my-3 bg-green-500 hover:bg-green-600 transition-all duration-200 rounded-2xl p-3 ${show&&'group-hover:opacity-100,opacity-0'}`
-        }
+        className={`cursor-pointer  w-full my-3 bg-green-500 hover:bg-green-600 transition-all duration-200 rounded-2xl p-3 ${show && "group-hover:opacity-100,opacity-0"}`}
       >
-       {
-        isLoading? "Adding...":" Add to cart"
-       }
+        {isLoading ? "Adding..." : " Add to cart"}
       </Button>
     </>
   );

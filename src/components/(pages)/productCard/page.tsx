@@ -1,19 +1,12 @@
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+
 import { Button } from "@base-ui/react";
 import { Heart, Star } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import AddToCartBtn from "@/components/addToCartBtn/AddToCartBtn";
 import { AllProducts } from "@/types/allProducts.types";
 import WishListIcon from "@/components/WishListIcon/WishListIcon";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import AddToCartBtn from "@/components/addToCartBtn/AddToCartBtn";
 
 export default function ProductCard({ product,isWish }: { product: AllProducts,isWish:Boolean }) {
   return (
@@ -55,7 +48,6 @@ export default function ProductCard({ product,isWish }: { product: AllProducts,i
                   </div>
                 </CardDescription>
               </CardHeader>
-              <CardContent></CardContent>
             </Link>
            <AddToCartBtn proId={product._id}/>
           </Card>

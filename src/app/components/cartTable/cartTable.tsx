@@ -2,12 +2,12 @@
 
 import { CartOwner } from "@/types/userCart.type"
 import Image from "next/image"
-import RemoveFromCartBtn from "../RemoveFromCartBtn/RemoveFromCartBtn"
 import { Button } from "@base-ui/react"
 import { Trash } from "lucide-react"
-import ClearCartBtn from "../ClearCartBtn/ClearCartBtn"
-import UpdateQty from "../UpdateQty/UpdateQty"
 import Link from "next/link"
+import ClearCartBtn from "@/components/ClearCartBtn/ClearCartBtn"
+import UpdateQty from "@/components/UpdateQty/UpdateQty"
+import RemoveFromCartBtn from "@/components/RemoveFromCartBtn/RemoveFromCartBtn"
 
 export default function CartTable({cart}:{cart:CartOwner}) {
 
@@ -74,7 +74,7 @@ export default function CartTable({cart}:{cart:CartOwner}) {
   </table>
     <div className="flex justify-center ">
         <Button className={'text-center rounded-2xl w-[70%] p-3 bg-green-500 mx-auto'}>
-        <Link href={'/checkOut'}>Proceed to payment</Link>
+        <Link href={`/checkOut/${cart?._id}`}>Proceed to payment</Link>
       </Button>
     </div>
 </div>

@@ -1,5 +1,5 @@
 import getUserCart from '@/cartAction/getUserCart'
-import CartTable from '@/components/cartTable/cartTable'
+import CartTable from '@/app/components/cartTable/cartTable'
 import { log } from 'console'
 
 

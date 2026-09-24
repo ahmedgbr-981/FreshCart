@@ -145,6 +145,9 @@ export default function Register() {
             {isLoading ? <Loader2 className="animate-spin" /> : "Sign in"}
           </Button>
         </form>
+       <div className="my-3 cursor-pointer hover:text-green-400 hover:underline">
+         <Link href={'/forgotPassword'}>Forgot password?</Link>
+       </div>
       </div>
     </>
   );
