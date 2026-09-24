@@ -10,7 +10,7 @@ export default async function CatSlider() {
   return (
     <>
     <div className='w-[90%]'>
-        <h2 className='text-xl'>Categories</h2>
+        <h2 className='w-full text-center py-5 text-3xl text-green-600 shadow rounded-2xl my-3'>Categories</h2>
 
      <CatsSlidering data={data}/>
       

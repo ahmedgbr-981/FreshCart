@@ -6,6 +6,7 @@ import 'swiper/css';
 import { Autoplay } from 'swiper/modules';
 import Image from 'next/image';
 import { AllCats } from '@/types/allCats.types';
+import Link from 'next/link';
 
 export default function CatsSlidering({data}:{data:AllCats[]}) {
   return (
@@ -20,8 +21,9 @@ export default function CatsSlidering({data}:{data:AllCats[]}) {
      {data.map((cat)=>
      <SwiperSlide key={cat._id}>
 
-      <img src={cat.image} className='size-200 object-cover'  alt="wtf" />
-     </SwiperSlide>)}
+<Link href={'/categories'}>
+      <img src={cat.image} className='size-200 object-cover rounded-2xl'   alt="wtf" />
+</Link>     </SwiperSlide>)}
      </Swiper>
    </>
   )
