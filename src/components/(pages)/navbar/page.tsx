@@ -43,12 +43,12 @@ export default function Navbar({cartIcon}:{cartIcon:React.ReactNode}) {
 
           <Link
             href="/"
-            className="flex items-center gap-2 text-lg font-bold tracking-tight text-foreground"
+            className="flex items-center gap-2 text-lg font-bold tracking-tight text-green-600"
           >
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-sm font-extrabold text-primary-foreground">
-              E
+            <span className="bg-green-600 flex h-9 w-9 items-center justify-center rounded-lg  text-sm font-extrabold text-primary-foreground">
+              FC
             </span>
-            E-commerce
+            FreshCart
           </Link>
         </div>
 
@@ -57,7 +57,7 @@ export default function Navbar({cartIcon}:{cartIcon:React.ReactNode}) {
             href="/"
             className={
               path == "/"
-                ? "text-green-500 bg-gray-200 rounded-2xl p-1 "
+                ? "text-green-500  rounded-2xl p-1 "
                 : "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             }
           >
@@ -67,7 +67,7 @@ export default function Navbar({cartIcon}:{cartIcon:React.ReactNode}) {
             href="/categories"
             className={
               path == "/categories"
-                ? "text-green-500 bg-gray-200 rounded-2xl p-1 "
+                ? "text-green-500  rounded-2xl p-1 "
                 : "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             }
           >
@@ -77,7 +77,7 @@ export default function Navbar({cartIcon}:{cartIcon:React.ReactNode}) {
             href="/products"
             className={
               path == "/products"
-                ? "text-green-500 bg-gray-200 rounded-2xl p-1 "
+                ? "text-green-500  rounded-2xl p-1 "
                 : "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             }
           >
@@ -87,7 +87,7 @@ export default function Navbar({cartIcon}:{cartIcon:React.ReactNode}) {
             href="/brands"
             className={
               path == "/brands"
-                ? "text-green-500 bg-gray-200 rounded-2xl p-1 "
+                ? "text-green-500  rounded-2xl p-1 "
                 : "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             }
           >
@@ -97,7 +97,7 @@ export default function Navbar({cartIcon}:{cartIcon:React.ReactNode}) {
             href="/wishList"
             className={
               path == "/wishList"
-                ? "text-green-500 bg-gray-200 rounded-2xl p-1 "
+                ? "text-green-500  rounded-2xl p-1 "
                 : "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             }
           >
@@ -107,7 +107,7 @@ export default function Navbar({cartIcon}:{cartIcon:React.ReactNode}) {
             href="/cart"
             className={
               path == "/cart"
-                ? "text-green-500 bg-gray-200 rounded-2xl p-1 "
+                ? "text-green-500  rounded-2xl p-1 "
                 : "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             }
           >

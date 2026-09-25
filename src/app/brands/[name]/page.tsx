@@ -56,7 +56,7 @@ export default async function Brand({
         </Link>
 
         <section className="overflow-hidden rounded-[2rem] border border-slate-900/10 bg-white shadow-[0_24px_70px_-42px_rgba(15,23,42,0.45)] lg:grid lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="relative flex min-h-[22rem] items-center justify-center overflow-hidden bg-[#e8efe8] p-10 sm:min-h-[30rem] sm:p-16">
+          <div className="relative flex min-h-88 items-center justify-center overflow-hidden bg-[#e8efe8] p-10 sm:min-h-[30] sm:p-16">
             <div className="absolute left-8 top-8 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.24em] text-emerald-800/60">
               <Sparkles size={14} aria-hidden="true" />
               Featured brand
