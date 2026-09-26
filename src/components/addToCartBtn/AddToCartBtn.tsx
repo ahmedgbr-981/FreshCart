@@ -12,7 +12,7 @@ export default function AddToCartBtn({
   show = false,
 }: {
   proId: string;
-  show?: Boolean;
+  show?: boolean;
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
@@ -37,7 +37,7 @@ export default function AddToCartBtn({
       } else {
         toast.error("somthin went wrong");
       }
-    } catch (error) {
+    } catch {
       toast.error("error!", {
         position: "top-right",
         autoClose: 1000,
@@ -52,9 +52,10 @@ export default function AddToCartBtn({
     <>
       <Button
         onClick={() => AddToCartBridge(proId)}
-        className={`cursor-pointer  w-full my-3 bg-green-500 hover:bg-green-600 transition-all duration-200 rounded-2xl p-3 ${show && "group-hover:opacity-100,opacity-0"}`}
+        disabled={isLoading}
+        className={`my-3 min-h-11 w-full cursor-pointer rounded-md bg-emerald-800 px-3 text-sm font-semibold text-white transition-colors hover:bg-emerald-700 disabled:cursor-wait disabled:opacity-60 ${show ? "group-hover:opacity-100" : ""}`}
       >
-        {isLoading ? "Adding..." : " Add to cart"}
+        {isLoading ? "Adding..." : "Add to cart"}
       </Button>
     </>
   );

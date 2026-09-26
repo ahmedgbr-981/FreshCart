@@ -1,58 +1,53 @@
 
-import { Button } from "@base-ui/react";
-import { Heart, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { AllProducts } from "@/types/allProducts.types";
+import type { AllProducts } from "@/types/allProducts.types";
 import WishListIcon from "@/components/WishListIcon/WishListIcon";
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import AddToCartBtn from "@/components/addToCartBtn/AddToCartBtn";
 
-export default function ProductCard({ product,isWish }: { product: AllProducts,isWish:Boolean }) {
+export default function ProductCard({ product, isWish }: { product: AllProducts; isWish: boolean }) {
   return (
-    <>
-      <div className="w-full md:w-1/4 lg:w-1/5 ">
-        <div className="inner ">
-         <WishListIcon id={product.id} isWish={isWish} />
-          <Card className="px-4 ring-0 hover:ring-2 hover:ring-green-500 cursor-pointer group">
-            <Link href={`/products/${product.id}`}>
-              <CardHeader>
-                <CardTitle className="p-3 text-green-700">
-                  {product.category.name.split(" ").slice(0, 1).join(" ")}
-                </CardTitle>
-                <CardDescription>
-                  <Image
-                    width={500}
-                    height={500}
-                    src={product.imageCover}
-                    className="rounded-2xl"
-                    alt=""
-                  />
-                  <h2 className="text-black py-2 text-xl">
-                    {product.title.split(" ").slice(0, 2).join(" ")}
-                  </h2>
-                  <div className="flex justify-between">
-                    <div className="star-left">
-                      <span>{product.price} EGP</span>
-                    </div>
-                    <div className="star-right">
-                      <span className="flex items-center gap-1">
-                        {product.ratingsAverage}{" "}
-                        <Star
-                          size={15}
-                          fill="yellow"
-                          className="text-yellow-300 "
-                        />
-                      </span>
-                    </div>
-                  </div>
-                </CardDescription>
-              </CardHeader>
-            </Link>
-           <AddToCartBtn proId={product._id}/>
-          </Card>
+    <article className="group min-w-0">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-md bg-[#f0f3ef]">
+        <Link
+          href={`/products/${product.id}`}
+          aria-label={`View ${product.title}`}
+          className="absolute inset-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700"
+        >
+          <Image
+            fill
+            sizes="(max-width: 640px) 46vw, (max-width: 1024px) 30vw, 20vw"
+            src={product.imageCover}
+            className="object-contain p-3 transition-transform duration-300 group-hover:scale-[1.03]"
+            alt={product.title}
+          />
+        </Link>
+        <div className="absolute right-2 top-2 z-10">
+          <WishListIcon id={product.id} isWish={isWish} />
         </div>
       </div>
-    </>
+
+      <div className="pt-3">
+        <p className="truncate text-xs font-medium text-slate-500">
+          {product.category.name}
+        </p>
+        <Link href={`/products/${product.id}`} className="mt-1 block">
+          <h2 className="line-clamp-2 min-h-11 text-sm font-semibold leading-5 text-slate-950 transition-colors group-hover:text-emerald-800 sm:text-base">
+            {product.title}
+          </h2>
+        </Link>
+        <div className="mt-2 flex items-center justify-between gap-2">
+          <p className="font-semibold tabular-nums text-slate-950">
+            {product.price.toLocaleString()} <span className="text-xs font-medium text-slate-500">EGP</span>
+          </p>
+          <span className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-slate-600">
+            <Star size={14} fill="currentColor" className="text-amber-500" aria-hidden="true" />
+            {product.ratingsAverage}
+          </span>
+        </div>
+        <AddToCartBtn proId={product._id} />
+      </div>
+    </article>
   );
 }

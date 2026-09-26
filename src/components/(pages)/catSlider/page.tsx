@@ -1,20 +1,33 @@
 import getAllCats from '@/api/getCats.api'
-import { log } from 'console'
+import type { AllCats } from '@/types/allCats.types'
+import { ArrowUpRight } from 'lucide-react'
+import Link from 'next/link'
 import CatsSlidering from '../catsSidering/page'
 
-
 export default async function CatSlider() {
+  const response = await getAllCats()
+  const categories: AllCats[] = response.data ?? []
 
-    const {data}=await getAllCats()
-    log(data)
   return (
-    <>
-    <div className='w-[90%]'>
-        <h2 className='w-full text-center py-5 text-3xl text-green-600 shadow rounded-2xl my-3'>Categories</h2>
-
-     <CatsSlidering data={data}/>
-      
-    </div>
-    </>
+    <section className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <header className="mb-5 flex items-end justify-between gap-4">
+        <div>
+          <h2 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
+            Shop by category
+          </h2>
+          <p className="mt-2 text-sm text-slate-500">
+            Browse the departments in the store.
+          </p>
+        </div>
+        <Link
+          href="/categories"
+          className="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-emerald-800 transition-colors hover:text-emerald-600"
+        >
+          All categories
+          <ArrowUpRight size={15} aria-hidden="true" />
+        </Link>
+      </header>
+      <CatsSlidering data={categories} />
+    </section>
   )
 }

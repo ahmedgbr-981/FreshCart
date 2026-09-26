@@ -61,7 +61,7 @@ export default async function SubCats({
             {subCategories.map((subCategory, index) => (
               <Link
                 key={subCategory._id}
-                href={`/products?subcategory=${subCategory._id}`}
+                href={`/categories/${catId}/subCats/${subCategory._id}`}
                 className="group relative min-h-64 overflow-hidden rounded-2xl border border-slate-900/10 bg-white p-7 shadow-[0_16px_35px_-28px_rgba(15,23,42,0.5)] transition duration-300 hover:-translate-y-1 hover:border-emerald-500/50 hover:shadow-[0_20px_40px_-24px_rgba(5,150,105,0.35)] sm:p-8"
               >
                 <div className="absolute -right-12 -top-12 h-36 w-36 rounded-full border-18 border-emerald-50 transition duration-500 group-hover:scale-125 group-hover:border-emerald-100" />

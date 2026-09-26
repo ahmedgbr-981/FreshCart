@@ -2,8 +2,7 @@
 
 import { CartOwner } from "@/types/userCart.type"
 import Image from "next/image"
-import { Button } from "@base-ui/react"
-import { Trash } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 import ClearCartBtn from "@/components/ClearCartBtn/ClearCartBtn"
 import UpdateQty from "@/components/UpdateQty/UpdateQty"
@@ -72,10 +71,14 @@ export default function CartTable({cart}:{cart:CartOwner}) {
       </tr>)}
     </tbody>
   </table>
-    <div className="flex justify-center ">
-        <Button className={'text-center rounded-2xl w-[70%] p-3 bg-green-500 mx-auto'}>
-        <Link href={`/checkOut/${cart?._id}`}>Proceed to payment</Link>
-      </Button>
+    <div className="mt-5 flex justify-end border-t border-default-medium px-3 pt-5">
+      <Link
+        href={`/checkOut/${cart?._id}`}
+        className="group inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-xl border-b-4 border-green-700 bg-green-500 px-6 text-sm font-bold text-slate-900 shadow-sm transition-all hover:bg-green-400 active:translate-y-1 active:border-b-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-700 sm:w-auto sm:min-w-64"
+      >
+        Proceed to payment
+        <ArrowRight size={18} aria-hidden="true" className="transition-transform group-hover:translate-x-1" />
+      </Link>
     </div>
 </div>
 
