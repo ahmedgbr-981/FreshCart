@@ -18,7 +18,7 @@ const navItems = [
 ];
 
 const categoryLinks = [
-  { label: "All cats", href: "/categoreyProduct" },
+  { label: "All cats", href: "/categories" },
   { label: "Electronics", href: "/categoreyProduct?categoryId=6439d2d167d9aa4ca970649f" },
   { label: "Men's fashion", href: "/categoreyProduct?categoryId=6439d5b90049ad0b52b90048" },
   { label: "Women's fashion", href: "/categoreyProduct?categoryId=6439d58a0049ad0b52b9003f" },

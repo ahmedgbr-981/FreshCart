@@ -9,7 +9,7 @@ import AddToCartBtn from "@/components/addToCartBtn/AddToCartBtn";
 export default function ProductCard({ product, isWish }: { product: AllProducts; isWish: boolean }) {
   return (
     <article className="group min-w-0">
-      <div className="relative aspect-[4/5] overflow-hidden rounded-md bg-[#f0f3ef]">
+      <div className="relative aspect-4/5 overflow-hidden rounded-md bg-[#f0f3ef]">
         <Link
           href={`/products/${product.id}`}
           aria-label={`View ${product.title}`}
