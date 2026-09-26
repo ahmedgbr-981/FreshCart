@@ -1,5 +1,5 @@
 "use client";
-import AddToCartBtn from "@/app/components/addToCartBtn/AddToCartBtn";
+import AddToCartBtn from "@/components/addToCartBtn/AddToCartBtn";
 import { ProductDetailes } from "@/types/productDetailes.types";
 import { Star } from "lucide-react";
 import Image from "next/image";
