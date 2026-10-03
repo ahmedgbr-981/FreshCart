@@ -5,6 +5,7 @@ import Navbar from "@/components/(pages)/navbar/page";
 import { ToastContainer } from "react-toastify";
 import MySessionProvider from "@/sessionProvider/MySessionProvider";
 import NavbarWrapper from "@/components/NavbarWrapper/NavbarWrapper";
+import Footer from "@/components/Footer/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +32,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
      <MySessionProvider>
          <NavbarWrapper/>
         <ToastContainer/>
-        {children}
+      <div className="flex-1">{children}</div>
+      <Footer />
      </MySessionProvider>
 
         </body>
